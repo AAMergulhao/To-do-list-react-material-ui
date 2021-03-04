@@ -9,7 +9,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import blue from '@material-ui/core/colors/blue';
 import green from '@material-ui/core/colors/green';
 
-
+import "./assets/global.css"
 const theme = createMuiTheme({
   palette: {
     type: "dark",
