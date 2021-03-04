@@ -1,76 +1,72 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import { Container, TextField, Fab } from '@material-ui/core';
-import Add from '@material-ui/icons/Add';
+import React, { useEffect, useState } from 'react';
 
-import ToDo from './components/Item';
+import { createMuiTheme, CssBaseline } from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/styles';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
+import blue from '@material-ui/core/colors/blue';
+import green from '@material-ui/core/colors/green';
+
+import Landing from "./pages/Landing";
+
+const themeDark = createMuiTheme({
+  palette: {
+    type: "dark",
+    background: {
+      default: blue[500]
     },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.primary,
+    text: {
+      primary: "#fff",
+      secondary: "#fff"
     },
-  }),
-);
+    primary: {
+      main: blue[500],
+    },
 
+    secondary: {
+      main: green[500],
+    },
+  }
+});
 
+const themelight = createMuiTheme({
+  palette: {
+    type: "light",
+    background: {
+      default: blue[500]
+    },
+    text: {
+      primary: "black",
+      secondary: "#fff"
+    },
+    primary: {
+      main: blue[500],
+    },
+
+    secondary: {
+      main: green[500],
+    },
+  }
+});
 
 export default function App() {
 
-  const listRef = useRef(null);
+  const [isThemeDark, setIsThemeDark] = useState(true);
 
-  const [items, setItem] = useState([]);
+  const changeTheme = () => {
+    if (!isThemeDark) {
+      setIsThemeDark(true);
+    } else {
+      setIsThemeDark(false);
+    }
 
-  let id = 1;
-  const addItem = () => {
-    let newItem = <ToDo itemID={id.toString()} content="Teste props" />
-    setItem(items => [...items, newItem]);
   };
-
-  const classes = useStyles();
-
-  useEffect(() =>{
-    listRef.current.scrollIntoView({ behavior: 'smooth' });
-  })
-  // const todoItems = [<ToDo/>, <ToDo/>, <ToDo/>,<ToDo/>, <ToDo/>, <ToDo/>,<ToDo/>, <ToDo/>, <ToDo/>]
+  console.log(isThemeDark);
+  console.log(isThemeDark ? "themeDark" : "themelight");
 
   return (
-
-    <div className={classes.root}>
-      <Container maxWidth="sm">
-        <Grid container spacing={3}>
-
-          <Grid item xs={12}>
-            <Paper component="div" className="paper" color="secondary">
-              <Grid container spacing={3}>
-                <Grid item sm={8} lg={10}>
-                  <TextField id="filled-basic" label="Tarefa" variant="outlined" fullWidth={true} color="primary" />
-                </Grid>
-                <Grid item xs={1}>
-                  <Fab color="primary" aria-label="add" onClick={addItem}>
-                    <Add />
-                  </Fab>
-                </Grid>
-              </Grid>
-            </Paper>
-          </Grid>
-
-          <Grid item xs={12}>
-            <ul id="items-list" ref={listRef} style={{ height: "450px", overflow: "scroll" }}>
-              {items}
-            </ul>
-
-          </Grid>
-
-        </Grid>
-      </Container>
-    </div>
+    <ThemeProvider theme={isThemeDark ? themeDark : themelight}>
+      <CssBaseline />
+      <Landing changeTheme={changeTheme} isThemeDark={isThemeDark} />
+    </ThemeProvider>
   );
 }

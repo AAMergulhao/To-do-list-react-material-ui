@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React from 'react';
 
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -25,7 +25,7 @@ const ToDo: React.FC<ToDoProps> = (props: ToDoProps) => {
     const classes = useStyles();
 
     return (
-        <li className="pop" id={props.itemID}>
+        <li className="pop" id={props.itemID} key={props.itemID}>
             <Paper className="paper" color="secondary" style={{ marginBottom: "10px" }}>
                 <Grid container spacing={2}>
                     <Grid item sm={2} lg={2}>
@@ -41,11 +41,7 @@ const ToDo: React.FC<ToDoProps> = (props: ToDoProps) => {
                             <DeleteIcon fontSize="large" />
                         </IconButton>
                     </Grid>
-
-
-
                 </Grid>
-
             </Paper>
         </li>
     )
