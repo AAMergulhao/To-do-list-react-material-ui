@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -18,14 +18,16 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface ToDoProps {
     content?: string,
-    itemID?: string
+    itemID?: string,
+    deleteToDo: Function
 }
 
 const ToDo: React.FC<ToDoProps> = (props: ToDoProps) => {
+    const [animation, setAnimation] = useState("pop");
     const classes = useStyles();
 
     return (
-        <li className="pop" id={props.itemID} key={props.itemID}>
+        <li className={`${animation}`} id={props.itemID} key={props.itemID}>
             <Paper className="paper" color="secondary" style={{ marginBottom: "10px" }}>
                 <Grid container spacing={2}>
                     <Grid item sm={2} lg={2}>
@@ -37,7 +39,10 @@ const ToDo: React.FC<ToDoProps> = (props: ToDoProps) => {
                         <p className="truncate">{props.content}</p>
                     </Grid>
                     <Grid item sm={1} lg={2}>
-                        <IconButton aria-label="delete" style={{ color: "red" }}>
+                        <IconButton aria-label="delete" style={{ color: "red" }} onClick={() => {
+                            setAnimation("popOut");
+                            setTimeout(function(){ props.deleteToDo(props.itemID); }, 500);
+                            }}>
                             <DeleteIcon fontSize="large" />
                         </IconButton>
                     </Grid>

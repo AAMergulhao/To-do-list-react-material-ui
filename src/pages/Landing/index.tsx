@@ -50,6 +50,12 @@ const Landing: React.FC<LandingProps> = (props: LandingProps) => {
         }
     };
 
+    const handleRemove = (index) =>{
+        const newList = items.filter((item) => item != items[index]);
+
+        setItem(newList);
+    }
+
     const classes = useStyles();
 
     useEffect(() => {
@@ -85,7 +91,11 @@ const Landing: React.FC<LandingProps> = (props: LandingProps) => {
                             {items.length >= 1 &&
                                 <ul id="items-list" style={{ height: "450px", overflow: "auto", overflowX: "hidden" }}>
                                 {items.map(function (item, i) {
-                                    return <ToDo key={i} itemID={i.toString()} content={item} />
+                                    return <ToDo 
+                                                key={i} 
+                                                itemID={i.toString()} 
+                                                content={item}
+                                                deleteToDo={handleRemove} />
                                 })}
                             </ul>
                             }
