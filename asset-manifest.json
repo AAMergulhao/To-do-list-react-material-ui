@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/to-do-list-react-material-ui/static/css/main.81fd6f39.chunk.css",
+    "main.js": "/to-do-list-react-material-ui/static/js/main.aa1bf00a.chunk.js",
+    "main.js.map": "/to-do-list-react-material-ui/static/js/main.aa1bf00a.chunk.js.map",
+    "runtime-main.js": "/to-do-list-react-material-ui/static/js/runtime-main.1859ee45.js",
+    "runtime-main.js.map": "/to-do-list-react-material-ui/static/js/runtime-main.1859ee45.js.map",
+    "static/js/2.a11fe379.chunk.js": "/to-do-list-react-material-ui/static/js/2.a11fe379.chunk.js",
+    "static/js/2.a11fe379.chunk.js.map": "/to-do-list-react-material-ui/static/js/2.a11fe379.chunk.js.map",
+    "index.html": "/to-do-list-react-material-ui/index.html",
+    "static/css/main.81fd6f39.chunk.css.map": "/to-do-list-react-material-ui/static/css/main.81fd6f39.chunk.css.map",
+    "static/js/2.a11fe379.chunk.js.LICENSE.txt": "/to-do-list-react-material-ui/static/js/2.a11fe379.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1859ee45.js",
+    "static/js/2.a11fe379.chunk.js",
+    "static/css/main.81fd6f39.chunk.css",
+    "static/js/main.aa1bf00a.chunk.js"
+  ]
+}
