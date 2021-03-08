@@ -8,9 +8,6 @@ import App from './App';
 import "./assets/global.css"
 
 
-ReactDOM.render(
-  <React.StrictMode>
-      <App />
-  </React.StrictMode>,
+ReactDOM.render(<App />,
   document.getElementById('root')
 );

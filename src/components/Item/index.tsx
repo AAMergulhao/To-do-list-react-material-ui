@@ -11,14 +11,16 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         avatarColor: {
             color: theme.palette.text.secondary,
-            backgroundColor: theme.palette.primary.main
         },
+        paper:{
+            padding:"12px",
+            backgroundColor: theme.palette.primary.main
+        }
     }),
 );
 
 interface ToDoProps {
     content?: string,
-    itemID?: string,
     deleteToDo: Function
 }
 
@@ -27,21 +29,21 @@ const ToDo: React.FC<ToDoProps> = (props: ToDoProps) => {
     const classes = useStyles();
 
     return (
-        <li className={`${animation}`} id={props.itemID} key={props.itemID}>
-            <Paper className="paper" color="secondary" style={{ marginBottom: "10px" }}>
+        <li className={`${animation}`} >
+            <Paper className={classes.paper} style={{ marginBottom: "10px" }} variant="outlined" color="primary">
                 <Grid container spacing={2}>
-                    <Grid item sm={2} lg={2}>
+                    <Grid item sm={2} md={2} lg={2}>
                         <Avatar variant="rounded" className={classes.avatarColor}>
                             <AssignmentIcon />
                         </Avatar>
                     </Grid>
-                    <Grid item sm={1} lg={8}>
+                    <Grid item sm={8} md={8} lg={8}>
                         <p className="truncate">{props.content}</p>
                     </Grid>
-                    <Grid item sm={1} lg={2}>
+                    <Grid item sm={1} md={2} lg={2}>
                         <IconButton aria-label="delete" style={{ color: "red" }} onClick={() => {
                             setAnimation("popOut");
-                            setTimeout(function(){ props.deleteToDo(props.itemID); }, 500);
+                            setTimeout(() => { props.deleteToDo(props.content)}, 500);
                             }}>
                             <DeleteIcon fontSize="large" />
                         </IconButton>
